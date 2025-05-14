@@ -1,0 +1,443 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="author" content="Untree.co" />
+    <link rel="shortcut icon" href="{% static 'favicon.png' %}" />
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap4" />
+
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <title>Login | Furni</title>
+    <style>
+      .login-section {
+        padding: 7rem 0;
+      }
+      .login-wrap {
+        background: #fff;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 40px;
+      }
+      .login-wrap .heading-section {
+        font-size: 28px;
+        font-weight: 700;
+        color: #2f2f2f;
+        margin-bottom: 30px;
+      }
+      .login-wrap h3 {
+        font-size: 22px;
+        font-weight: 600;
+        color: #2f2f2f;
+        margin-bottom: 30px;
+      }
+      .form-control {
+        height: 50px;
+        border-radius: 5px;
+        border: 1px solid #e5e5e5;
+        padding: 0 15px;
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+      .form-control:focus {
+        border-color: #2f2f2f;
+        box-shadow: none;
+      }
+      .btn-primary {
+        background: #2f2f2f;
+        border: none;
+        color: #fff;
+        padding: 12px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+      }
+      .btn-primary:hover {
+        background: #3a3a3a;
+      }
+      .alert-danger {
+        background: #f8d7da;
+        color: #721c24;
+        border-radius: 5px;
+        padding: 10px 15px;
+        margin-bottom: 20px;
+        border: none;
+      }
+      .checkbox-wrap {
+        display: block;
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 16px;
+        user-select: none;
+      }
+      .checkbox-wrap input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+      .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 20px;
+        width: 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        border-radius: 3px;
+      }
+      .checkbox-wrap:hover input ~ .checkmark {
+        background-color: #f1f1f1;
+      }
+      .checkbox-wrap input:checked ~ .checkmark {
+        background-color: #2f2f2f;
+      }
+      .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+      .checkbox-wrap input:checked ~ .checkmark:after {
+        display: block;
+      }
+      .checkbox-wrap .checkmark:after {
+        left: 7px;
+        top: 3px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
+      .field-icon {
+        float: right;
+        margin-right: 15px;
+        margin-top: -35px;
+        position: relative;
+        z-index: 2;
+        color: #666;
+        cursor: pointer;
+      }
+      .signup-link {
+        text-align: center;
+        margin-top: 20px;
+      }
+      .signup-link a {
+        color: #2f2f2f;
+        text-decoration: underline;
+      }
+      .signup-link a:hover {
+        color: #000;
+      }
+      .forgot-password {
+        color: #2f2f2f !important;
+        text-decoration: underline !important;
+      }
+      .forgot-password:hover {
+        color: #000 !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Start Header/Navigation -->
+    <nav
+      class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark"
+      arial-label="Furni navigation bar"
+    >
+      <div class="container">
+        <a class="navbar-brand" href="{% url "home" %}">Furni<span>.</span></a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarsFurni"
+          aria-controls="navbarsFurni"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsFurni">
+          <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url "home" %}">Home</a>
+            </li>
+            <li><a class="nav-link" href="{% url "shop" %}">Shop</a></li>
+            <li><a class="nav-link" href="{% url "about" %}">About us</a></li>
+            <li><a class="nav-link" href="{% url "services" %}">Services</a></li>
+            <li><a class="nav-link" href="{% url "blog" %}">Blog</a></li>
+            <li><a class="nav-link" href="contact.html">Contact us</a></li>
+          </ul>
+
+          <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+            <li class="nav-item">
+              <div class="dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="{% static "images/user.svg" %}" />
+                </a>
+                <ul class="dropdown-menu">
+                  {% if user.is_authenticated %}
+                    <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                  {% else %}
+                    <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
+                    <li><a class="dropdown-item" href="{% url 'register' %}">Register</a></li>
+                  {% endif %}
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a class="nav-link" href="{% url "cart" %}"><img src="{% static "images/cart.svg" %}"/>
+              {% if user.is_authenticated %}
+                  {% with cart=user.cart %}
+                    <span class="cart-count">{{ cart.items.count }}</span>
+                  {% endwith %}
+                {% else %}
+                  {% with session_cart=request.session.cart %}
+                    {% if session_cart %}
+                      <span class="cart-count">{{ session_cart|length }}</span>
+                    {% else %}
+                      <span class="cart-count">0</span>
+                    {% endif %}
+                  {% endwith %}
+              {% endif %}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Header/Navigation -->
+
+    <!-- Start Login Section -->
+    <div class="login-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-6 text-center mb-5">
+            <h2 class="heading-section">Login to Your Account</h2>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-6 col-lg-5">
+            <div class="login-wrap p-4 p-md-5">
+              <h3 class="text-center mb-4">Welcome Back</h3>
+              <form method="POST" class="signin-form">
+                {% csrf_token %}
+                {% if form.non_field_errors %}
+                <div class="alert alert-danger">
+                  {{ form.non_field_errors }}
+                </div>
+                {% endif %}
+                <div class="form-group">
+                  <input type="text" name="username" class="form-control" placeholder="Username" required
+                    value="{{ form.username.value|default_if_none:'' }}">
+                  {% if form.username.errors %}
+                  <div class="alert alert-danger">
+                    {{ form.username.errors.0 }}
+                  </div>
+                  {% endif %}
+                </div>
+                <div class="form-group">
+                  <input id="password-field" type="password" name="password" class="form-control"
+                    placeholder="Password" required>
+                  {% if form.password.errors %}
+                  <div class="alert alert-danger">
+                    {{ form.password.errors.0 }}
+                  </div>
+                  {% endif %}
+                </div>
+                <div class="form-group d-flex justify-content-between align-items-center">
+                  <div class="w-50">
+                    <label class="checkbox-wrap checkbox-primary">Remember Me
+                      <input type="checkbox" checked>
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary w-100">Sign In</button>
+                </div>
+              </form>
+              <div class="signup-link text-center mt-4">
+                Don't have an account? <a href="{% url 'register' %}">Sign Up</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Login Section -->
+
+    <!-- Start Footer Section -->
+    <footer class="footer-section">
+      <div class="container relative">
+        <div class="sofa-img">
+          <img
+            src="{% static 'images/sofa.png' %}"
+            alt="Image"
+            class="img-fluid"
+          />
+        </div>
+
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="subscription-form">
+              <h3 class="d-flex align-items-center">
+                <span class="me-1"
+                  ><img
+                    src="{% static 'images/envelope-outline.svg' %}"
+                    alt="Image"
+                    class="img-fluid" /></span
+                ><span>Subscribe to Newsletter</span>
+              </h3>
+
+              <form action="#" class="row g-3">
+                <div class="col-auto">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter your name"
+                  />
+                </div>
+                <div class="col-auto">
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Enter your email"
+                  />
+                </div>
+                <div class="col-auto">
+                  <button class="btn btn-primary">
+                    <span class="fa fa-paper-plane"></span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-5 mb-5">
+          <div class="col-lg-4">
+            <div class="mb-4 footer-logo-wrap">
+              <a href="#" class="footer-logo">Furni<span>.</span></a>
+            </div>
+            <p class="mb-4">
+              Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio
+              quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam
+              vulputate velit imperdiet dolor tempor tristique. Pellentesque
+              habitant
+            </p>
+
+            <ul class="list-unstyled custom-social">
+              <li>
+                <a href="#"><span class="fa fa-brands fa-facebook-f"></span></a>
+              </li>
+              <li>
+                <a href="#"><span class="fa fa-brands fa-twitter"></span></a>
+              </li>
+              <li>
+                <a href="#"><span class="fa fa-brands fa-instagram"></span></a>
+              </li>
+              <li>
+                <a href="#"><span class="fa fa-brands fa-linkedin"></span></a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-8">
+            <div class="row links-wrap">
+              <div class="col-6 col-sm-6 col-md-3">
+                <ul class="list-unstyled">
+                  <li><a href="#">About us</a></li>
+                  <li><a href="#">Services</a></li>
+                  <li><a href="#">Blog</a></li>
+                  <li><a href="#">Contact us</a></li>
+                </ul>
+              </div>
+
+              <div class="col-6 col-sm-6 col-md-3">
+                <ul class="list-unstyled">
+                  <li><a href="#">Support</a></li>
+                  <li><a href="#">Knowledge base</a></li>
+                  <li><a href="#">Live chat</a></li>
+                </ul>
+              </div>
+
+              <div class="col-6 col-sm-6 col-md-3">
+                <ul class="list-unstyled">
+                  <li><a href="#">Jobs</a></li>
+                  <li><a href="#">Our team</a></li>
+                  <li><a href="#">Leadership</a></li>
+                  <li><a href="#">Privacy Policy</a></li>
+                </ul>
+              </div>
+
+              <div class="col-6 col-sm-6 col-md-3">
+                <ul class="list-unstyled">
+                  <li><a href="#">Nordic Chair</a></li>
+                  <li><a href="#">Kruzo Aero</a></li>
+                  <li><a href="#">Ergonomic Chair</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-top copyright">
+          <div class="row pt-4">
+            <div class="col-lg-6">
+              <p class="mb-2 text-center text-lg-start">
+                Copyright &copy;
+                <script>
+                  document.write(new Date().getFullYear());
+                </script>
+                . All Rights Reserved. &mdash; Designed with love by
+                <a href="https://untree.co">Untree.co</a> Distributed By
+                <a hreff="https://themewagon.com">ThemeWagon</a>
+              </p>
+            </div>
+
+            <div class="col-lg-6 text-center text-lg-end">
+              <ul class="list-unstyled d-inline-flex ms-auto">
+                <li class="me-4"><a href="#">Terms &amp; Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer Section -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+    <script>
+      (function($) {
+        $(".toggle-password").click(function() {
+          $(this).toggleClass("fa-eye fa-eye-slash");
+          var input = $($(this).attr("toggle"));
+          if (input.attr("type") == "password") {
+            input.attr("type", "text");
+          } else {
+            input.attr("type", "password");
+          }
+        });
+      })(jQuery);
+    </script>
+  </body>
+</html>
